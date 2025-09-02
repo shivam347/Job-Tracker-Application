@@ -1,6 +1,5 @@
 package com.java.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /* this class is used to send details of token, email and other details when the user logged in or authenticated successfully
@@ -8,7 +7,7 @@ import lombok.Data;
  */
 
 @Data
-@AllArgsConstructor
+
 public class JwtResponse {
 
     private String token;
@@ -17,6 +16,19 @@ public class JwtResponse {
     private String firstName;
     private String lastName;
     private boolean gmailConnected;
+    
+
+    public JwtResponse(String token, String type, String email, String firstName, String lastName,
+            boolean gmailConnected) {
+        this.token = token;
+        this.type = type;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gmailConnected = gmailConnected;
+    }
+
+    
 
 
     
