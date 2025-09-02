@@ -16,12 +16,11 @@ public class JwtResponse {
     private String firstName;
     private String lastName;
     private boolean gmailConnected;
-    
 
-    public JwtResponse(String token, String type, String email, String firstName, String lastName,
+
+    public JwtResponse(String token, String email, String firstName, String lastName,
             boolean gmailConnected) {
         this.token = token;
-        this.type = type;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
