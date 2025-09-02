@@ -1,6 +1,5 @@
 package com.java.security;
 
-import java.nio.file.attribute.UserPrincipal;
 import java.security.Key;
 import java.util.Date;
 import java.util.Base64;
@@ -19,7 +18,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 
 /* Utility class for handling jwt (Json web token ) 
- * operations in your spring boot project 
+ * 
  * 
  * @component -> Makes this class as spring bean
  * so that it can injected(autowired) into other classes
@@ -59,7 +58,7 @@ public class JwtUtils {
      * returns the jwt string 
      */
 
-    private String generateJwtToken(Authentication authentication){
+    public String generateJwtToken(Authentication authentication){
 
       UserPrincipal userPrincipal =  (UserPrincipal) authentication.getPrincipal();
 
@@ -78,7 +77,7 @@ public class JwtUtils {
      * Simply using email
      */
 
-    private String generateTokenFromEmail(String email){
+    public String generateTokenFromEmail(String email){
 
         return Jwts.builder()
         .setSubject(email)
@@ -97,7 +96,7 @@ public class JwtUtils {
      * which user is logged in so that spring
      * can load user from the db and continue processing the request
      */
-    private String extractEmailFromToken(String token){
+    public String extractEmailFromToken(String token){
 
         return Jwts.parserBuilder() // parser is used to validate and decode JWT tokens
         .setSigningKey(key())  // sets the secret key for verifying the jwt signature
@@ -109,7 +108,7 @@ public class JwtUtils {
 
 
     /* Method to validate the token */
-    private boolean validateToken(String authToken){
+    public boolean validateToken(String authToken){
 
         try {
             Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
